@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "json5": "2.2.3",
-    "express": "4.21.1",
+    "express": "5.1.0",
     "express-json5": "0.1.0"
   },
   "devDependencies": {}
