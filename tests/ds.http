@@ -1,0 +1,119 @@
+### 基本接口
+@urlBase = http://127.0.0.1:3500
+###
+get {{urlBase}}/
+###
+get {{urlBase}}/ping
+
+###
+post h{{urlBase}}/testpost
+
+### ds接口
+@apisqlUrl = {{urlBase}}/api2sql
+
+###  ping
+POST {{apisqlUrl}}
+content-type: application/json
+
+{
+    fun:"ping",
+    debug:1,
+}
+### ping/json5
+POST {{apisqlUrl}}
+content-type: application/json
+
+{
+    fun:"ping",
+    json5:1,
+    debug:1,
+}
+
+### 错误的方法
+POST {{apisqlUrl}}
+content-type: application/json
+
+{
+    fun:"errorfun",
+    json5:1,
+    debug:1,
+}
+### 所有适配器 getDbAdapters
+POST {{apisqlUrl}}
+content-type: application/json
+
+{
+    fun:"getDbAdapters",
+    debug:1,
+}
+
+### ------------- sample 适配器 ------------------
+### 连接参数模版 adapterCnnParamDesc
+POST {{apisqlUrl}}
+content-type: application/json
+
+{
+    fun:"adapterCnnParamDesc",
+    debug:1,
+    funParams:"sample",
+}
+
+@dsParams = {adapterName: "sample", cnnParamStr:{sampleCnn: "例子连接字符串"}}
+@dataSource ={dsParams:{{dsParams}}}
+
+### 测试连接 testCnn
+POST {{apisqlUrl}}
+content-type: application/json
+
+{
+    debug:1,
+    fun:"testCnn",
+    funParams:{
+        dsParams:{{dsParams}}
+    }
+}
+### 获取表名 getTableNames
+POST {{apisqlUrl}}
+content-type: application/json
+
+{
+    fun:"getTableNames",
+    debug:0,
+    funParams:{
+        dataSource:{{dataSource}}
+    }
+}
+### 获取字段名 getFieldInfo
+POST {{apisqlUrl}}
+content-type: application/json
+
+{
+    fun:"getFieldInfo",
+    debug:0,
+    funParams:{
+        dataSource:{{dataSource}},
+        tableName:"dict"
+    }
+}
+
+### execSqlObj select
+POST {{apisqlUrl}}
+content-type: application/json
+
+{
+    fun:"execSqlObj",
+    debug:0,
+    funParams:{
+        dataSource:{{dataSource}},
+        sqlObj:{
+            sql: 'select * from users where (id<=:id)',
+            params: { id: 30 },
+            //dynFilter: { s2: '%111', s1: 'aaa' },//动态过滤参数 可选
+            page: { pageNum: 1, pageSize: 30, },//分页 可选
+            sortby: { id: 'desc'},
+            colInfo:1,
+            debug:1
+        }
+    }
+}
+
