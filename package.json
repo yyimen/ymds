@@ -1,6 +1,6 @@
 {
   "name": "ymds",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependenciesVersion": "16",
   "description": "yimen datasource",
   "main": "index.js",
