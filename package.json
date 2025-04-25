@@ -1,25 +1,23 @@
 {
-    "name": "ymds",
-    "version": "1.0.50425.0",
-    "dependenciesVersion": "16",
-    "description": "yimen datasource",
-    "main": "index.js",
-    "scripts": {
-        "app1": "node ./tests/app1.js"
-    },
-    
-    "repository": {
-        "type": "git",
-        "url": "https://git89.yyimen.com:89/db2api/ym-ds/ymds.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "json5": "2.2.3",
-        "express": "4.21.1",
-        "express-json5": "0.1.0"
-    },
-    "devDependencies": {
-        
-    }
+  "name": "ymds",
+  "version": "1.0.50425.0",
+  "dependenciesVersion": "16",
+  "description": "yimen datasource",
+  "main": "index.js",
+  "scripts": {
+    "app1": "node ./tests/app1.js",
+    "publish": "node ./发布/newVersion.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yyimen/ymds.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "json5": "2.2.3",
+    "express": "4.21.1",
+    "express-json5": "0.1.0"
+  },
+  "devDependencies": {}
 }
